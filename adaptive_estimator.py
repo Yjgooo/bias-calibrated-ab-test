@@ -918,6 +918,16 @@ if __name__ == "__main__":
         plt.tight_layout()
         plt.savefig(f"./experiment_results/{prior_spec['name']}/plots/lower_bounds.png", dpi=150)
         plt.close()
+
+        # Plot 2b: Lower bounds using visualization module
+        fig, ax = plot_last_day_lower_bounds(
+            results['last_day_results'],
+            T=results['sim']['d_obs'].shape[1],
+            true_last_day=results['held_out_experiment']['true_last_day'],
+            title=f"Last-day lower bounds (viz module) - {prior_spec['name']}"
+        )
+        fig.savefig(f"./experiment_results/{prior_spec['name']}/plots/lower_bounds_vizmodule.png", dpi=150)
+        plt.close(fig)
         
         # Plot 3: Sample trajectories
         plot_sample_trajectories_aligned_start(results['sim'], n_plot=12, which="d_obs", seed=0)

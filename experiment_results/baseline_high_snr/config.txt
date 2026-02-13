@@ -1,0 +1,36 @@
+============================================================
+Experiment: baseline_high_snr
+============================================================
+
+TRUE HYPERPARAMETERS (Prior):
+  a_mean: 0.0
+  a_sd: 0.05
+  pi: 0.7
+  nu: 3.0
+  sigma_pos: 0.1
+  sigma_neg: 0.06
+  lambda_low: 1.0
+  lambda_high: 30.0
+  K: 300
+  T: 14
+  N_T_range: (2000, 20000)
+  N_C_range: (2000, 20000)
+
+FITTED HYPERPARAMETERS (EB Estimates):
+  a_mean: -0.02437549665221776
+  a_sd: 0.136304260172448
+  loglambda_mean: 1.7281911898841213
+  loglambda_sd: 1.7321820571835982
+  pi: 0.67
+  nu: 3.0
+  sigma_pos: 0.14008718160773292
+  sigma_neg: 0.0921174940062851
+  counts: {'K': 300, 'n_pos': 201, 'n_neg': 99}
+
+LAST-DAY METHOD RESULTS:
+  Held-out experiment index: 100
+  N_eff: 1857.47
+  Estimated sigma: 0.5367
+  True last-day value: 0.0067
+  k_star: 13
+  Lower bound: -0.2979

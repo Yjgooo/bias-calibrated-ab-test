@@ -1,0 +1,36 @@
+============================================================
+Experiment: more_negative_effects
+============================================================
+
+TRUE HYPERPARAMETERS (Prior):
+  a_mean: 0.0
+  a_sd: 0.05
+  pi: 0.5
+  nu: 3.0
+  sigma_pos: 0.1
+  sigma_neg: 0.1
+  lambda_low: 1.0
+  lambda_high: 30.0
+  K: 300
+  T: 14
+  N_T_range: (2000, 20000)
+  N_C_range: (2000, 20000)
+
+FITTED HYPERPARAMETERS (EB Estimates):
+  a_mean: -0.008415567609309912
+  a_sd: 0.14308034298422523
+  loglambda_mean: 1.7518122987414007
+  loglambda_sd: 1.686315011405384
+  pi: 0.5
+  nu: 3.0
+  sigma_pos: 0.14170581856414127
+  sigma_neg: 0.13031121410776458
+  counts: {'K': 300, 'n_pos': 150, 'n_neg': 150}
+
+LAST-DAY METHOD RESULTS:
+  Held-out experiment index: 100
+  N_eff: 1857.47
+  Estimated sigma: 0.5367
+  True last-day value: 0.0067
+  k_star: 13
+  Lower bound: -0.3057

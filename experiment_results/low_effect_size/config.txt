@@ -1,0 +1,36 @@
+============================================================
+Experiment: low_effect_size
+============================================================
+
+TRUE HYPERPARAMETERS (Prior):
+  a_mean: 0.0
+  a_sd: 0.05
+  pi: 0.7
+  nu: 3.0
+  sigma_pos: 0.05
+  sigma_neg: 0.03
+  lambda_low: 1.0
+  lambda_high: 30.0
+  K: 300
+  T: 14
+  N_T_range: (2000, 20000)
+  N_C_range: (2000, 20000)
+
+FITTED HYPERPARAMETERS (EB Estimates):
+  a_mean: -0.02129781180569333
+  a_sd: 0.11062233305353224
+  loglambda_mean: 1.5997854260663336
+  loglambda_sd: 1.8616779974242137
+  pi: 0.6633333333333333
+  nu: 3.0
+  sigma_pos: 0.0869001892629736
+  sigma_neg: 0.058883110403694046
+  counts: {'K': 300, 'n_pos': 199, 'n_neg': 101}
+
+LAST-DAY METHOD RESULTS:
+  Held-out experiment index: 100
+  N_eff: 1857.47
+  Estimated sigma: 0.5585
+  True last-day value: 0.0056
+  k_star: 13
+  Lower bound: -0.3444
