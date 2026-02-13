@@ -648,7 +648,7 @@ def last_day_method_lower_bound_confseq_backward(
             cs_pen = (1.0 / k) * math.sqrt(var_term * math.log(log_arg))
 
         eta = float(eta_by_k[k])
-        L = xbar - (eta + cs_pen)
+        L = xbar + eta - cs_pen
 
         L_by_k[k] = float(L)
         xbar_by_k[k] = float(xbar)
@@ -807,9 +807,53 @@ def save_experiment_results(results: Dict[str, Any], output_dir: str = "./experi
 # ============================================================
 
 if __name__ == "__main__":
-
     # Define multiple hand-picked priors to test
     priors_to_test = [
+        {
+            "name": "extreme_sd_b_10k",
+            "config": SyntheticABConfig(
+                K=300, T=14, seed=0, nu=3.0,
+                pi=0.7, sigma_pos=10.0, sigma_neg=10.0,
+                N_T_low=9000, N_T_high=11000,
+                N_C_low=9000, N_C_high=11000,
+            )
+        },
+        {
+            "name": "large_sample_100k",
+            "config": SyntheticABConfig(
+                K=300, T=14, seed=0, nu=3.0,
+                pi=0.7, sigma_pos=0.10, sigma_neg=0.06,
+                N_T_low=90000, N_T_high=110000,
+                N_C_low=90000, N_C_high=110000,
+            )
+        },
+        {
+            "name": "very_high_sd_b_10k",
+            "config": SyntheticABConfig(
+                K=300, T=14, seed=0, nu=3.0,
+                pi=0.7, sigma_pos=2.0, sigma_neg=2.0,
+                N_T_low=9000, N_T_high=11000,
+                N_C_low=9000, N_C_high=11000,
+            )
+        },
+        {
+            "name": "high_sd_b_10k",
+            "config": SyntheticABConfig(
+                K=300, T=14, seed=0, nu=3.0,
+                pi=0.7, sigma_pos=1.0, sigma_neg=1.0,
+                N_T_low=9000, N_T_high=11000,
+                N_C_low=9000, N_C_high=11000,
+            )
+        },
+        {
+            "name": "medium_sample_10k",
+            "config": SyntheticABConfig(
+                K=300, T=14, seed=0, nu=3.0,
+                pi=0.7, sigma_pos=0.10, sigma_neg=0.06,
+                N_T_low=9000, N_T_high=11000,
+                N_C_low=9000, N_C_high=11000,
+            )
+        },
         {
             "name": "baseline_high_snr",
             "config": SyntheticABConfig(
@@ -903,21 +947,6 @@ if __name__ == "__main__":
         plt.savefig(f"./experiment_results/{prior_spec['name']}/plots/etas_thresholds.png", dpi=150)
         plt.close()
         
-        # Plot 2: Lower bounds by window size
-        plt.figure(figsize=(10, 6))
-        ks_plot = np.array(sorted(results['last_day_results']['L_by_k'].keys()))
-        L_vals = np.array([results['last_day_results']['L_by_k'][k] for k in ks_plot])
-        plt.plot(ks_plot, L_vals, marker="o", linewidth=2, markersize=8, label="L_k (lower bound)")
-        plt.axhline(results['held_out_experiment']['true_last_day'], color='r', linestyle='--', linewidth=2, label=f"True value: {results['held_out_experiment']['true_last_day']:.4f}")
-        plt.axvline(results['last_day_results']['k_star'], color='g', linestyle='--', linewidth=2, label=f"k_star: {results['last_day_results']['k_star']}")
-        plt.xlabel("k (window size)", fontsize=12)
-        plt.ylabel("Lower bound value", fontsize=12)
-        plt.title(f"Last-day method lower bounds - {prior_spec['name']}", fontsize=14)
-        plt.legend(fontsize=11)
-        plt.grid(True, alpha=0.3)
-        plt.tight_layout()
-        plt.savefig(f"./experiment_results/{prior_spec['name']}/plots/lower_bounds.png", dpi=150)
-        plt.close()
 
         # Plot 2b: Lower bounds using visualization module
         fig, ax = plot_last_day_lower_bounds(

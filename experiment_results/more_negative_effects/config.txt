@@ -33,4 +33,4 @@ LAST-DAY METHOD RESULTS:
   Estimated sigma: 0.5367
   True last-day value: 0.0067
   k_star: 13
-  Lower bound: -0.3057
+  Lower bound: -0.4204

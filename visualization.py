@@ -58,7 +58,7 @@ def plot_sample_trajectories(
     plt.ylabel(which)
     plt.title(f"Sample trajectories ({which}), n_plot={n_plot}")
     plt.grid(True, alpha=0.3)
-    plt.show()
+    # plt.show()  # Disabled to prevent pop-up during batch runs
 
 
 def plot_sample_trajectories_aligned_start(
@@ -109,7 +109,7 @@ def plot_sample_trajectories_aligned_start(
     plt.ylabel(f"{which}" + (" (aligned)" if align_start else ""))
     plt.title(f"Sample trajectories ({which}), n_plot={n_plot}, align_start={align_start}")
     plt.grid(True, alpha=0.3)
-    plt.show()
+    # plt.show()  # Disabled to prevent pop-up during batch runs
 
 
 def plot_last_day_lower_bounds(
@@ -117,7 +117,7 @@ def plot_last_day_lower_bounds(
     *,
     T: int,
     true_last_day: float | None = None,
-    title: str = "Last-day backward selection: lower bounds vs window start day",
+    title: str = "Bias-Calibrated Lower Confidence Bound for Last-Day Mean",
     show_xbar: bool = True,
     ax=None,
 ):
@@ -157,6 +157,7 @@ def plot_last_day_lower_bounds(
     noise_only_lb = noise_only_lb[order]
     xbar = xbar[order]
 
+
     if ax is None:
         fig, ax = plt.subplots()
     else:
@@ -165,7 +166,7 @@ def plot_last_day_lower_bounds(
     ax.plot(start_days, noise_only_lb, marker="o",
             label="Lower bound (CS penalty only): x̄ - cs_pen")
     ax.plot(start_days, full_lb, marker="o",
-            label="Lower bound (bias+CS): L_k = x̄ - (η_k + cs_pen)")
+            label="Lower bound (bias+CS): L_k = x̄ + η_k - cs_pen")
 
     if show_xbar:
         ax.plot(start_days, xbar, marker=".", linestyle="--",
@@ -182,8 +183,11 @@ def plot_last_day_lower_bounds(
     idx_star = np.where(start_days == start_star)[0]
     if idx_star.size > 0:
         j = int(idx_star[0])
-        ax.scatter([start_star], [full_lb[j]], marker="*", s=180,
-                   label=f"Chosen window start day = {start_star} (k*={k_star})")
+        ax.scatter(
+            [start_star], [full_lb[j]],
+            marker="*", s=400, color="red", edgecolor="black", linewidth=1.5, zorder=10,
+            label=f"Chosen window start day = {start_star} (k*={k_star})"
+        )
         ax.axvline(start_star, linestyle=":", linewidth=1)
 
     ax.set_xlabel("Start day of last-k window (T-k+1)")

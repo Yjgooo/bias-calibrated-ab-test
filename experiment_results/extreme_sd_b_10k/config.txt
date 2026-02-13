@@ -1,0 +1,36 @@
+============================================================
+Experiment: extreme_sd_b_10k
+============================================================
+
+TRUE HYPERPARAMETERS (Prior):
+  a_mean: 0.0
+  a_sd: 0.05
+  pi: 0.7
+  nu: 3.0
+  sigma_pos: 10.0
+  sigma_neg: 10.0
+  lambda_low: 1.0
+  lambda_high: 30.0
+  K: 300
+  T: 14
+  N_T_range: (9000, 11000)
+  N_C_range: (9000, 11000)
+
+FITTED HYPERPARAMETERS (EB Estimates):
+  a_mean: -7.195259093559651e-05
+  a_sd: 0.15814020601533696
+  loglambda_mean: 1.8593267106619407
+  loglambda_sd: 1.0486653196541633
+  pi: 0.6666666666666666
+  nu: 3.0
+  sigma_pos: 1.9999999999999971
+  sigma_neg: 1.9999999999999982
+  counts: {'K': 300, 'n_pos': 200, 'n_neg': 100}
+
+LAST-DAY METHOD RESULTS:
+  Held-out experiment index: 100
+  N_eff: 4842.58
+  Estimated sigma: 0.5992
+  True last-day value: 0.2328
+  k_star: 12
+  Lower bound: -0.5660

@@ -1,5 +1,5 @@
 ============================================================
-Experiment: baseline_high_snr
+Experiment: medium_sample_10k
 ============================================================
 
 TRUE HYPERPARAMETERS (Prior):
@@ -13,24 +13,24 @@ TRUE HYPERPARAMETERS (Prior):
   lambda_high: 30.0
   K: 300
   T: 14
-  N_T_range: (2000, 20000)
-  N_C_range: (2000, 20000)
+  N_T_range: (9000, 11000)
+  N_C_range: (9000, 11000)
 
 FITTED HYPERPARAMETERS (EB Estimates):
-  a_mean: -0.02437549665221776
-  a_sd: 0.136304260172448
-  loglambda_mean: 1.7281911898841213
-  loglambda_sd: 1.7321820571835982
-  pi: 0.67
+  a_mean: -0.020138614895454442
+  a_sd: 0.12981883746021847
+  loglambda_mean: 1.7454358393049778
+  loglambda_sd: 1.7098501824169423
+  pi: 0.6733333333333333
   nu: 3.0
-  sigma_pos: 0.14008718160773292
-  sigma_neg: 0.0921174940062851
-  counts: {'K': 300, 'n_pos': 201, 'n_neg': 99}
+  sigma_pos: 0.13421050402736587
+  sigma_neg: 0.0939661219848883
+  counts: {'K': 300, 'n_pos': 202, 'n_neg': 98}
 
 LAST-DAY METHOD RESULTS:
   Held-out experiment index: 100
-  N_eff: 1857.47
-  Estimated sigma: 0.5367
+  N_eff: 4842.58
+  Estimated sigma: 0.5431
   True last-day value: 0.0067
   k_star: 13
-  Lower bound: -0.4281
+  Lower bound: -0.4309
